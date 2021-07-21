@@ -32,6 +32,23 @@ class Item
      */
     private $createdBy;
 
+    // Permet de lier l'entity Category grâce à la méthode ManyToOne
+    // Ne pas oublier de faire les getters et setters à la fin aussi
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="articles")
+     */
+    private $category;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Tag", inversedBy="articles")
+     */
+    private $tag;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $price;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -72,4 +89,49 @@ class Item
 
         return $this;
     }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): self
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param mixed $category
+     */
+    public function setCategory($category): void
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTag()
+    {
+        return $this->tag;
+    }
+
+    /**
+     * @param mixed $tag
+     */
+    public function setTag($tag): void
+    {
+        $this->tag = $tag;
+    }
+
 }

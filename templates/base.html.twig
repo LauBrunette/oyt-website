@@ -1,19 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale=1.0>
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <title>{% block metaTitle %}{% endblock metaTitle %}</title>
+    <!-- la fonction asset va chercher le fichier dans le dossier public directement -->
+    <!-- asset : JS, images, CSS, etc. -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<header>
+
+    <nav>
+        <div class="nav-img">
+            <a href={{ path('home') }}><img src={{ asset('images/logo.png') }} alt="logo" class="logo"></a>
+        </div>
+        <div class="nav-list">
+            <ul>
+                {# <a href={{ path('front_category_list') }}><li>Catégories</li></a> #}
+                <a href=""><li>notre petite histoire</li></a>
+                <a href=""><li>lire nos articles</li></a>
+                <a href=""><li>les tutoriels</li></a>
+                <a href=""><li>acheter nos produits</li></a>
+                <a href={{ path('app_login') }}><li>se connecter</li></a>
+            </ul>
+        </div>
+        <!-- Créer un formulaire avec une méthode GET pour récupérer les données (apparaît dans l'URL) -->
+
+
+    </nav>
+
+</header>
+<main>
+
+    {% block main %}
+    {% endblock main %}
+
+</main>
+<footer>
+
+    <div class="footer-div">
+        <ul class="footer-li">
+            <a href=""><li>mentions légales</li></a>
+            <a href=""><li>liens utiles</li></a>
+            <a href=""><li>nous contacter</li></a>
+        </ul>
+    </div>
+
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
 </html>
